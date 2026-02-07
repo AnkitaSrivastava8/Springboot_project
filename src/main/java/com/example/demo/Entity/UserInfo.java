@@ -1,0 +1,25 @@
+package com.example.demo.Entity;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Document(collection="users")
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+public class UserInfo {
+	
+	private String firstName;
+	private String lastName;
+	private String userName;
+	private String mailId;
+	private String password;
+	 
+
+}
