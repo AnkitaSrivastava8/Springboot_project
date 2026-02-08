@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.UserSignUpRequest;
+import com.example.demo.dto.UserSignUpRequest;
 
 public interface UsersInfoService {
 

@@ -1,6 +1,4 @@
-package com.example.demo.Entity;
-
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.example.demo.dto;
 
 import com.example.demo.Enums.TicketStatus;
 
@@ -8,17 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "tickets_info")
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class TicketInfo {
+public class TicketInfoDto {
 	
 	String ticketTitle;
 	String ticketDescription;
 	String createdBy;
 	String modifiedBy;
 	TicketStatus status;
-
 }
