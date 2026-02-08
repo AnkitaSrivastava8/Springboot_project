@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.Entity.TicketInfo;
 import com.example.demo.dto.TicketInfoDto;
+import com.example.demo.dto.UserLoginRequest;
 import com.example.demo.dto.UserSignUpRequest;
 import com.example.demo.service.TicketInfoService;
 import com.example.demo.service.UsersInfoService;
@@ -44,9 +45,14 @@ public class UsersController {
 		}
 	}
 	
-	@PostMapping
-	public ResponseEntity<?> userLogin(){
-		return new ResponseEntity<>(HttpStatus.OK);
+	@PostMapping(value = "/login")
+	public ResponseEntity<?> userLogin(@RequestBody UserLoginRequest userLoginRequest){
+	    try {
+		return new ResponseEntity<>(userServiceInfo.userLogin(userLoginRequest),HttpStatus.OK);
+	    } catch(Exception e) {
+	    	log.error("Exception occured while logging in {} {}", e.getMessage(), e.getStackTrace());
+	    	return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}	
 	
 	@PostMapping(value="/createTicket")
