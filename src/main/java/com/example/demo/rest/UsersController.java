@@ -1,5 +1,7 @@
 package com.example.demo.rest;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.Entity.TicketInfo;
 import com.example.demo.dto.TicketInfoDto;
 import com.example.demo.dto.UserSignUpRequest;
 import com.example.demo.service.TicketInfoService;
@@ -68,9 +71,15 @@ public class UsersController {
 		}
 	}
 	
-	@GetMapping
-	public ResponseEntity<?> getData(){
-		return new ResponseEntity<>(HttpStatus.OK);
+	@GetMapping(value="/getTicketList/userId/{userId}")
+	public ResponseEntity<?> getTicketList(@PathVariable String userId){
+		try {
+		List<TicketInfo> ticketList = ticketInfoService.getTicketList(userId);
+		return new ResponseEntity<>(ticketList,HttpStatus.OK);
+		} catch(Exception e) {
+			log.error("Exception occurred while fetching list of tickets for that user {} {}", e.getMessage(), e.getStackTrace());
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 

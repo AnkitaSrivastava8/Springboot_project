@@ -1,6 +1,11 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
+import org.bson.Document;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.TicketInfo;
@@ -31,6 +36,13 @@ public class TicketInfoServiceImpl implements TicketInfoService{
 		TicketInfo ticket = mongoTemplate.findById(ticketId, TicketInfo.class);
 		ticket.setStatus(ticketInfoDto.getStatus());
 		mongoTemplate.save(ticket, "tickets_info");
+	}
+	@Override
+	public List<TicketInfo> getTicketList(String userId) {
+		Query findQuery = new Query();
+		findQuery.addCriteria(Criteria.where("createdBy").is(userId));
+		List<TicketInfo> ticketList = mongoTemplate.find(findQuery, TicketInfo.class);
+		return ticketList;
 	}
 
 }
