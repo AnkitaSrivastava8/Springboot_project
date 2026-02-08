@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TicketInfoDto {
 	
+	String id;
 	String ticketTitle;
 	String ticketDescription;
 	String createdBy;

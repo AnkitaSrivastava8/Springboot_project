@@ -24,7 +24,7 @@ public class UserServiceInfoImpl implements UsersInfoService{
 	}
 	
 	public UserInfo convertDtoToEntity(UserSignUpRequest userSignUpRequest) {
-		UserInfo user = new UserInfo(userSignUpRequest.getFirstName(), userSignUpRequest.getLastName(), userSignUpRequest.getUsername(), userSignUpRequest.getMailId(), userSignUpRequest.getPassword());
+		UserInfo user = new UserInfo(userSignUpRequest.getId(), userSignUpRequest.getFirstName(), userSignUpRequest.getLastName(), userSignUpRequest.getUsername(), userSignUpRequest.getMailId(), userSignUpRequest.getPassword());
 		return user;
 	}
 

@@ -23,8 +23,14 @@ public class TicketInfoServiceImpl implements TicketInfoService{
 	}
 	
 	public TicketInfo convertDtoToEntity(TicketInfoDto ticketInfoDto) {
-		TicketInfo ticket = new TicketInfo(ticketInfoDto.getTicketTitle(), ticketInfoDto.getTicketDescription(), ticketInfoDto.getCreatedBy(), ticketInfoDto.getModifiedBy(), ticketInfoDto.getStatus());
+		TicketInfo ticket = new TicketInfo(ticketInfoDto.getId(), ticketInfoDto.getTicketTitle(), ticketInfoDto.getTicketDescription(), ticketInfoDto.getCreatedBy(), ticketInfoDto.getModifiedBy(), ticketInfoDto.getStatus());
 		return ticket;
+	}
+	@Override
+	public void updateTicketInfo(TicketInfoDto ticketInfoDto, String ticketId) {
+		TicketInfo ticket = mongoTemplate.findById(ticketId, TicketInfo.class);
+		ticket.setStatus(ticketInfoDto.getStatus());
+		mongoTemplate.save(ticket, "tickets_info");
 	}
 
 }

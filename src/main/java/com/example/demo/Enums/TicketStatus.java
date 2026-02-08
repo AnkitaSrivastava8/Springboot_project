@@ -2,7 +2,7 @@ package com.example.demo.Enums;
 
 public enum TicketStatus {
 	NEW("New"),
-    IN_PROGRESS("In Progress"),
+    IN_PROGRESS("In_Progress"),
     CLOSED("Closed");
 
     private final String label;

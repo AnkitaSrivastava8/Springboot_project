@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.demo.Enums.TicketStatus;
@@ -14,7 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class TicketInfo {
-	
+	@Id
+	String id;
 	String ticketTitle;
 	String ticketDescription;
 	String createdBy;
