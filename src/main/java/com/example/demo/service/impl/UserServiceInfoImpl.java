@@ -36,7 +36,7 @@ public class UserServiceInfoImpl implements UsersInfoService{
 
 	@Override
 	public boolean userLogin(UserLoginRequest userLoginRequest) {
-		String username = userLoginRequest.getUsername();
+		String username = userLoginRequest.getUserName();
 		Query findQuery = new Query();
 	    findQuery.addCriteria(Criteria.where("userName").is(username));
 	    List<UserInfo> user = mongoTemplate.find(findQuery, UserInfo.class);

@@ -1,23 +1,22 @@
-package com.example.demo.Entity;
+package com.example.demo.dto;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "agent_info")
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class AgentInfo {
+@Data
+public class AgentInfoDto {
+	
 	@Id
 	String id;
 	String agentName;
-	String phoneNumber;
-	String mailId;
 	String password;
-	
+	String mailId;
+	String phoneNumber;
 
 }
